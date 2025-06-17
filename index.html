@@ -1024,6 +1024,145 @@
             content: "• ";
             margin-right: 5px;
         }
+
+        /* Estilos para la página de ajustes */
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #00b894;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(20px);
+        }
+
+        .sound-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .sound-option {
+            padding: 8px 16px;
+            border: 2px solid #6c5ce7;
+            border-radius: 20px;
+            background: transparent;
+            color: #6c5ce7;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sound-option.active {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        .vibration-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .vibration-option {
+            padding: 8px 16px;
+            border: 2px solid #6c5ce7;
+            border-radius: 20px;
+            background: transparent;
+            color: #6c5ce7;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .vibration-option.active {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        .vibration-note {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .app-version {
+            text-align: center;
+            color: #6c5ce7;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* Modo oscuro */
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .dark-mode .phone-container {
+            background: #2d2d2d;
+        }
+
+        .dark-mode .section {
+            background: #3d3d3d;
+        }
+
+        .dark-mode .setting-label {
+            color: #fff;
+        }
+
+        .dark-mode .header {
+            color: #fff;
+        }
+
+        .dark-mode .section-header {
+            color: #fff;
+        }
+
+        .dark-mode .bottom-nav {
+            background: #3d3d3d;
+            border-top: 1px solid #555;
+        }
     </style>
 </head>
 
@@ -1513,6 +1652,101 @@
                 </div>
             </div>
 
+            <!-- Página 5: Ajustes -->
+            <div class="page" id="settingsPage">
+                <div class="app-container">
+                    <div class="header">
+                        <h1>Ajustes</h1>
+                    </div>
+
+                    <!-- Sección Apariencia -->
+                    <div class="section">
+                        <div class="section-header">
+                            <span class="icon">🎨</span>
+                            Apariencia
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Modo Oscuro</div>
+                            <div class="toggle-switch" id="darkModeToggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sección Notificaciones -->
+                    <div class="section">
+                        <div class="section-header">
+                            <span class="icon">🔔</span>
+                            Notificaciones
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Activar Notificaciones</div>
+                            <div class="toggle-switch active" id="notificationsToggle"></div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Tareas</div>
+                            <div class="toggle-switch active" id="tasksToggle"></div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Clases</div>
+                            <div class="toggle-switch active" id="classesToggle"></div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Comidas</div>
+                            <div class="toggle-switch active" id="mealsToggle"></div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Agenda</div>
+                            <div class="toggle-switch active" id="agendaToggle"></div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Mensajes Motivacionales</div>
+                            <div class="toggle-switch active" id="motivationalToggle"></div>
+                        </div>
+                    </div>
+
+                    <!-- Sección Alarmas -->
+                    <div class="section">
+                        <div class="section-header">
+                            <span class="icon">⏰</span>
+                            Alarmas
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Sonido Predeterminado</div>
+                        </div>
+                        <div class="sound-options">
+                            <button class="sound-option active" data-sound="clasico">Clásico</button>
+                            <button class="sound-option" data-sound="digital">Digital</button>
+                            <button class="sound-option" data-sound="suave">Suave</button>
+                        </div>
+
+                        <div class="setting-item" style="margin-top: 20px;">
+                            <div class="setting-label">Vibración Predeterminada</div>
+                        </div>
+                        <div class="vibration-options">
+                            <button class="vibration-option active" data-vibration="estandar">Estándar</button>
+                            <button class="vibration-option" data-vibration="corto">Corto</button>
+                            <button class="vibration-option" data-vibration="largo">Largo</button>
+                        </div>
+                        <div class="vibration-note">
+                            Toca una opción de vibración para probarla en tu dispositivo
+                        </div>
+                    </div>
+
+                    <!-- Sección WhatsApp -->
+                    <div class="section">
+                        <div class="section-header">
+                            <span class="icon">💬</span>
+                            Vinculación con WhatsApp
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">Activar Notificaciones por WhatsApp</div>
+                            <div class="toggle-switch" id="whatsappToggle"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-version">Organizador Estudiantil v1.0.0</div>
+                </div>
+            </div>
+
             <div class="bottom-nav">
                 <div class="nav-items">
                     <div class="nav-item active" data-page="homePage">
@@ -1531,7 +1765,7 @@
                         <div class="icon">🧡</div>
                         <span>Salud</span>
                     </div>
-                    <div class="nav-item">
+                    <div class="nav-item" data-page="settingsPage">
                         <div class="icon">⚙️</div>
                         <span>Ajustes</span>
                     </div>
